@@ -49,6 +49,15 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt-get update -y
 sudo apt-get install -y postgresql postgresql-contrib python-psycopg2 libpq-dev
 
+sudo apt-get -y -qq update
+sudo apt-get -y -qq install postgresql
+sudo service postgresql start
+
+sudo -i -u postgres psql -U postgres -c 'DROP DATABASE IF EXISTS jesse_db;'
+sudo -i -u postgres psql -U postgres -c 'CREATE DATABASE jesse_db;'
+sudo -i -u postgres psql -U postgres -c "CREATE USER jesse_user WITH PASSWORD 'password';"
+sudo -i -u postgres psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE jesse_db to jesse_user;"
+
 # install screen
 echo "installing Screen ..."
 sudo apt-get install -y screen
@@ -56,7 +65,7 @@ sudo apt-get install -y screen
 # install pip packages for jesse
 echo "installing jesse ..."
 pip install -r https://raw.githubusercontent.com/jesse-ai/jesse/master/requirements.txt
-pip install jesse
+#pip install jesse
 . ~/.profile
 
 echo "cleaning..."
