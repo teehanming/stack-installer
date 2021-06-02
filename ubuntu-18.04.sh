@@ -47,10 +47,8 @@ cd
 sudo apt-get install wget ca-certificates
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get update -y
-sudo apt-get install -y postgresql postgresql-contrib python-psycopg2 libpq-dev
-
+sudo apt-get install -y -qq postgresql postgresql-contrib python-psycopg2 libpq-dev
 sudo apt-get -y -qq update
-sudo apt-get -y -qq install postgresql
 sudo service postgresql start
 
 sudo -i -u postgres psql -U postgres -c 'DROP DATABASE IF EXISTS jesse_db;'
@@ -65,7 +63,7 @@ sudo apt-get install -y screen
 # install pip packages for jesse
 echo "installing jesse ..."
 pip install -r https://raw.githubusercontent.com/jesse-ai/jesse/master/requirements.txt
-pip install jesse
+#pip install jesse
 . ~/.profile
 
 echo "cleaning..."
