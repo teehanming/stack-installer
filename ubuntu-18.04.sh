@@ -63,7 +63,7 @@ sudo apt-get install -y screen
 # install pip packages for jesse
 echo "installing jesse ..."
 pip install -r https://raw.githubusercontent.com/jesse-ai/jesse/master/requirements.txt
-#pip install jesse
+pip install jesse
 . ~/.profile
 
 echo "cleaning..."
