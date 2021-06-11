@@ -17,7 +17,7 @@ Make sure your Ubuntu installaton is fresh and execute the appropriate command f
 
 ```sh
 # For Ubuntu 18.04 LTS
-source <(curl -fsSL https://raw.githubusercontent.com/jesse-ai/stack-installer/master/ubuntu-18.04.sh)
+source <(curl -fsSL https://raw.githubusercontent.com/teehanming/stack-installer/master/ubuntu-18.04.sh)
 
 # For Ubuntu 20.04 LTS
 source <(curl -fsSL https://raw.githubusercontent.com/jesse-ai/stack-installer/master/ubuntu-20.04.sh)
