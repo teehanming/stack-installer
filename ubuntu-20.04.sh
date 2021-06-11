@@ -35,6 +35,13 @@ cd
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get update -y
 sudo apt-get install -y postgresql postgresql-contrib python3-psycopg2 libpq-dev
+sudo apt-get -y -qq update
+sudo service postgresql start
+
+sudo -i -u postgres psql -U postgres -c 'DROP DATABASE IF EXISTS jesse_db;'
+sudo -i -u postgres psql -U postgres -c 'CREATE DATABASE jesse_db;'
+sudo -i -u postgres psql -U postgres -c "CREATE USER jesse_user WITH PASSWORD 'password';"
+sudo -i -u postgres psql -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE jesse_db to jesse_user;"
 
 # install screen
 echo "installing Screen ..."
@@ -61,7 +68,4 @@ python --version
 echo "Here's the output of 'pip --version':"
 pip --version
 
-# install Oh My Zsh
-echo "installing Oh My Zsh"
-sudo apt-get install -y git zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
